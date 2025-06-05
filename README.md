@@ -58,3 +58,8 @@ optional arguments:
   --swagger-file SWAGGER_FILE      # Path to the Swagger JSON file
   --output-dir OUTPUT_DIR          # Directory to save Burp request files
 ```
+6. Token-Tailor
+
+https://github.com/forteBruno/Token-Tailor
+
+![image](https://github.com/user-attachments/assets/b9965c39-b24d-4bfd-af33-cd32c12bc859)
