@@ -42,3 +42,19 @@ yRQYnWzskCZUxPwaQupWkiUzKELZ49eM7oWxAQK_ZXw
 ![image](https://github.com/user-attachments/assets/c49ff740-0a39-4c63-a437-47b8be94b667)
 
 ![image](https://github.com/user-attachments/assets/fa391dd8-0bfd-40bb-aa76-c9197350f81a)
+
+---
+5. Swagger Convertor in Burp Suite requests
+```
+python3 swagger.py -h
+usage: swagger.py [-h] [-t TOKEN] [-H HOST] [--swagger-file SWAGGER_FILE] [--output-dir OUTPUT_DIR]
+
+Convert Swagger JSON to Burp Suite requests
+
+optional arguments:
+  -h, --help                       # Show this help message and exit
+  -t TOKEN, --token TOKEN          # Access token to include in Authorization header as Bearer token
+  -H HOST, --host HOST             # Custom Host header value
+  --swagger-file SWAGGER_FILE      # Path to the Swagger JSON file
+  --output-dir OUTPUT_DIR          # Directory to save Burp request files
+```
