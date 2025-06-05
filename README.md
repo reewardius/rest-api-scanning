@@ -2,7 +2,7 @@
 
 
 
-
+---
 1. Load + Autofill -> Send to Burp -> Burp Export Items -> Nuclei DAST Scanning
 
 https://github.com/reewardius/Swagger-EZ
@@ -12,6 +12,7 @@ https://github.com/reewardius/Swagger-EZ
 
 ![image](https://github.com/user-attachments/assets/0904122b-b575-4203-8373-eedcc6da3658)
 
+---
 2. Nuclei DAST (OpenAPI)
 
 ![image](https://github.com/user-attachments/assets/0e4e1a2d-7093-4f86-95c1-0c70e767d629)
@@ -23,7 +24,18 @@ nuclei -l openapi.yaml -im openapi -t nuclei-dast-templates/
 
 ![image](https://github.com/user-attachments/assets/ddd0bbce-41f9-40fe-b09c-d185bfb71b6b)
 
-3. Burp Suite Api Scan
+---
+3. Convert openapi.json to Burp Suite requests
+
+https://github.com/bolbolabadi/swagger2burp
+```
+python3 swagger2burp.py -f openapi.json -b https://swagger.domain.com -ho swagger.domain.com -t eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
+eyJpc3MiOiJ0b3B0YWwuY29tIiwiZXhwIjoxNDI2NDIwODAwLCJodHRwOi8vdG9wdGFsLmNvbS9qd3RfY2xhaW1zL2lzX2FkbWluIjp0cnVlLCJjb21wYW55IjoiVG9wdGFsIiwiYXdlc29tZSI6dHJ1ZX0.
+yRQYnWzskCZUxPwaQupWkiUzKELZ49eM7oWxAQK_ZXw 
+```
+
+---
+4. Burp Suite Api Scan
 
 ![image](https://github.com/user-attachments/assets/74a46f9f-c984-4167-b5d2-d825d8d00cb8)
 
