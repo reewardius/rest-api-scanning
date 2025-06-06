@@ -90,6 +90,10 @@ python3 openapi_parse_v1.py --file openapi.json --host example.com --auth-value 
 
 ---
 6. **Detect Public Endpoints**
+
+- If Swagger has `securityDefinitions`, all methods are considered protected by default.
+- An endpoint is only considered public if it explicitly has `"security": []`.
+- If there are no `securityDefinitions`, all endpoints are considered public.
 ```
 python3 detect_public_endpoints.py --swagger swagger.json // Analysis of one swagger spec
 python3 detect_public_endpoints.py --swagger swagger_tesla.json swagger_starlink.json // Analyzing of multiple swagger specs
