@@ -38,30 +38,6 @@ nuclei -l openapi.yaml -im openapi -t nuclei-dast-templates/
 4. Convert Swagger to Burp Suite requests
 ```
 python3 swagger.py -h
-usage: swagger (1).py [-h] [-t TOKEN] [-H HOST] [--swagger-file SWAGGER_FILE]
-                      [--output-dir OUTPUT_DIR]
-
-Convert Swagger JSON to Burp Suite requests
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -t TOKEN, --token TOKEN
-                        Access token to include in Authorization header as
-                        Bearer token
-  -H HOST, --host HOST  Custom Host header value
-  --swagger-file SWAGGER_FILE
-                        Path to the Swagger JSON file
-  --output-dir OUTPUT_DIR
-                        Directory to save Burp request files
-```
-#### Example
-```
-python3 swagger.py --swagger-file swagger.json -t <jwt_token> -H api.example.com
-```
----
-5. Swagger Convertor in Burp Suite requests
-```
-python3 swagger.py -h
 usage: swagger.py [-h] [-t TOKEN] [-H HOST] [--swagger-file SWAGGER_FILE] [--output-dir OUTPUT_DIR]
 
 Convert Swagger JSON to Burp Suite requests
@@ -72,6 +48,10 @@ optional arguments:
   -H HOST, --host HOST             # Custom Host header value
   --swagger-file SWAGGER_FILE      # Path to the Swagger JSON file
   --output-dir OUTPUT_DIR          # Directory to save Burp request files
+```
+#### Example
+```
+python3 swagger.py --swagger-file swagger.json -t <jwt_token> -H api.example.com
 ```
 ---
 
