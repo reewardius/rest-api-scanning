@@ -55,7 +55,7 @@ python3 swagger.py --swagger-file swagger.json -t <jwt_token> -H api.example.com
 ```
 ---
 
-6. Open API Parser
+5. Open API Parser
 ```
 pip install jsonschema requests
 ```
@@ -90,7 +90,7 @@ python3 openapi_parse_v1.py --file openapi.json --host example.com --auth-value 
 
 ---
 
-8. Token-Tailor
+6. Token-Tailor
 
 https://github.com/forteBruno/Token-Tailor
 
