@@ -55,7 +55,7 @@ python3 swagger.py --swagger-file swagger.json -t <jwt_token> -H api.example.com
 ```
 ---
 
-5. Open API Parser
+5. Convert OpenAPI to Burp Suite requests
 ```
 pip install jsonschema requests
 ```
