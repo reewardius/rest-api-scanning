@@ -3,7 +3,7 @@
 
 
 ---
-1. Load + Autofill -> Send to Burp -> Burp Export Items -> Nuclei DAST Scanning
+1. **Load + Autofill -> Send to Burp -> Burp Export Items -> Nuclei DAST Scanning**
 
 https://github.com/reewardius/Swagger-EZ
 
@@ -13,7 +13,7 @@ https://github.com/reewardius/Swagger-EZ
 ![image](https://github.com/user-attachments/assets/0904122b-b575-4203-8373-eedcc6da3658)
 
 ---
-2. Nuclei DAST (OpenAPI)
+2. **Nuclei DAST (OpenAPI)**
 
 ![image](https://github.com/user-attachments/assets/0e4e1a2d-7093-4f86-95c1-0c70e767d629)
 ![image](https://github.com/user-attachments/assets/435bdac6-971c-4f04-a576-1f594fb27abd)
@@ -25,7 +25,7 @@ nuclei -l openapi.yaml -im openapi -t nuclei-dast-templates/
 ![image](https://github.com/user-attachments/assets/ddd0bbce-41f9-40fe-b09c-d185bfb71b6b)
 
 ---
-3. Burp Suite Api Scan
+3. **Burp Suite Api Scan**
 
 ![image](https://github.com/user-attachments/assets/74a46f9f-c984-4167-b5d2-d825d8d00cb8)
 
@@ -35,7 +35,7 @@ nuclei -l openapi.yaml -im openapi -t nuclei-dast-templates/
 
 
 ---
-4. Convert Swagger to Burp Suite requests
+4. **Convert Swagger to Burp Suite requests**
 ```
 python3 swagger.py -h
 usage: swagger.py [-h] [-t TOKEN] [-H HOST] [--swagger-file SWAGGER_FILE] [--output-dir OUTPUT_DIR]
@@ -55,7 +55,7 @@ python3 swagger.py --swagger-file swagger.json -t <jwt_token> -H api.example.com
 ```
 ---
 
-5. Convert OpenAPI to Burp Suite requests
+5. **Convert OpenAPI to Burp Suite requests**
 ```
 pip install jsonschema requests
 ```
@@ -89,8 +89,15 @@ python3 openapi_parse_v1.py --file openapi.json --host example.com --auth-value 
 ![image](https://github.com/user-attachments/assets/92c49442-5391-4ebb-a08d-f7e610fcb3d3)
 
 ---
+6. **Detect Public Endpoints**
+```
+python3 detect_public_endpoints.py --swagger swagger.json // Analysis of one swagger spec
+python3 detect_public_endpoints.py --swagger swagger_tesla.json swagger_starlink.json // Analyzing of multiple swagger specs
+```
 
-6. Token-Tailor
+---
+
+7. **Token-Tailor**
 
 https://github.com/forteBruno/Token-Tailor
 
