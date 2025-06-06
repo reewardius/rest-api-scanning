@@ -25,17 +25,7 @@ nuclei -l openapi.yaml -im openapi -t nuclei-dast-templates/
 ![image](https://github.com/user-attachments/assets/ddd0bbce-41f9-40fe-b09c-d185bfb71b6b)
 
 ---
-3. Convert openapi.json to Burp Suite requests
-
-https://github.com/bolbolabadi/swagger2burp
-```
-python3 swagger2burp.py -f openapi.json -b https://swagger.domain.com -ho swagger.domain.com -t eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
-eyJpc3MiOiJ0b3B0YWwuY29tIiwiZXhwIjoxNDI2NDIwODAwLCJodHRwOi8vdG9wdGFsLmNvbS9qd3RfY2xhaW1zL2lzX2FkbWluIjp0cnVlLCJjb21wYW55IjoiVG9wdGFsIiwiYXdlc29tZSI6dHJ1ZX0.
-yRQYnWzskCZUxPwaQupWkiUzKELZ49eM7oWxAQK_ZXw 
-```
-
----
-4. Burp Suite Api Scan
+3. Burp Suite Api Scan
 
 ![image](https://github.com/user-attachments/assets/74a46f9f-c984-4167-b5d2-d825d8d00cb8)
 
@@ -43,6 +33,31 @@ yRQYnWzskCZUxPwaQupWkiUzKELZ49eM7oWxAQK_ZXw
 
 ![image](https://github.com/user-attachments/assets/fa391dd8-0bfd-40bb-aa76-c9197350f81a)
 
+
+---
+4. Convert Swagger to Burp Suite requests
+```
+python3 swagger.py -h
+usage: swagger (1).py [-h] [-t TOKEN] [-H HOST] [--swagger-file SWAGGER_FILE]
+                      [--output-dir OUTPUT_DIR]
+
+Convert Swagger JSON to Burp Suite requests
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -t TOKEN, --token TOKEN
+                        Access token to include in Authorization header as
+                        Bearer token
+  -H HOST, --host HOST  Custom Host header value
+  --swagger-file SWAGGER_FILE
+                        Path to the Swagger JSON file
+  --output-dir OUTPUT_DIR
+                        Directory to save Burp request files
+```
+#### Example
+```
+python3 swagger.py --swagger-file swagger.json -t <jwt_token> -H api.example.com
+```
 ---
 5. Swagger Convertor in Burp Suite requests
 ```
@@ -58,7 +73,44 @@ optional arguments:
   --swagger-file SWAGGER_FILE      # Path to the Swagger JSON file
   --output-dir OUTPUT_DIR          # Directory to save Burp request files
 ```
-6. Token-Tailor
+---
+
+6. Open API Parser
+```
+pip install jsonschema requests
+```
+##### Help
+```
+python openapi_parse_v1.py -h
+usage: openapi_parse_v1.py [-h] --file FILE --host HOST [--auth-value AUTH_VALUE]
+                        [--auth-type {bearer,apiKey,basic}] [--proxy PROXY]
+
+Generate Burp Suite requests from OpenAPI documentation
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --file FILE           Path to OpenAPI JSON file
+  --host HOST           Host header (e.g., example.com)
+  --auth-value AUTH_VALUE
+                        Authentication value (Bearer token, API key, or
+                        user:pass for Basic Auth)
+  --auth-type {bearer,apiKey,basic}
+                        Authentication type
+  --proxy PROXY         Proxy address for Burp Suite (e.g., 127.0.0.1:8080)
+```
+##### Example:
+```
+python3 openapi_parse_v1.py --file openapi.json --host example.com --auth-value <jwt_token> --auth-type bearer --proxy 127.0.0.1:8080
+python3 openapi_parse_v1.py --file openapi.json --host example.com --auth-value user:pass --auth-type basic --proxy 127.0.0.1:8080
+python3 openapi_parse_v1.py --file openapi.json --host example.com --auth-value my-api-key-123 --auth-type apiKey    // Custom HTTP Header -> X-API-Key (can be changed in code)
+```
+**All Generate API requests will be saved in the burp_requests/ folder**
+
+![image](https://github.com/user-attachments/assets/92c49442-5391-4ebb-a08d-f7e610fcb3d3)
+
+---
+
+8. Token-Tailor
 
 https://github.com/forteBruno/Token-Tailor
 
