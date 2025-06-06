@@ -24,19 +24,19 @@ def detect_public_endpoints(swagger_file):
     return public_endpoints
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Поиск публичных эндпоинтов в Swagger JSON")
-    parser.add_argument('--swagger', nargs='+', required=True, help='Путь к Swagger JSON файлам')
+    parser = argparse.ArgumentParser(description="Detect public (unauthenticated) endpoints in Swagger JSON files")
+    parser.add_argument('--swagger', nargs='+', required=True, help='Path(s) to Swagger JSON file(s)')
 
     args = parser.parse_args()
 
     for file in args.swagger:
         try:
             public = detect_public_endpoints(file)
-            print(f"\nПубличные эндпоинты в {file}:")
+            print(f"\nPublic endpoints in {file}:")
             if public:
                 for method, endpoint in public:
                     print(f"  {method} {endpoint}")
             else:
-                print("  Нет публичных эндпоинтов.")
+                print("  No public endpoints found.")
         except Exception as e:
-            print(f"Ошибка при обработке {file}: {e}")
+            print(f"Error processing {file}: {e}")
