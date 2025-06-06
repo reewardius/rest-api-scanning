@@ -7,6 +7,7 @@ def detect_public_endpoints(swagger_file):
 
     paths = spec.get("paths", {})
     security_definitions = spec.get("securityDefinitions", None)
+    global_security = spec.get("security", None)
 
     public_endpoints = []
 
@@ -15,10 +16,16 @@ def detect_public_endpoints(swagger_file):
             if method not in {"get", "post", "put", "delete", "patch", "options", "head"}:
                 continue
 
-            if security_definitions:
-                if operation.get("security") == []:
+            operation_security = operation.get("security", None)
+
+            # Determine if the endpoint is public
+            if security_definitions or global_security:
+                # If security is explicitly empty, it's public
+                if operation_security == []:
                     public_endpoints.append((method.upper(), path))
+                # Otherwise (None or non-empty), it's protected
             else:
+                # No global security defined, treat all as public
                 public_endpoints.append((method.upper(), path))
 
     return public_endpoints
