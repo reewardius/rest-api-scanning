@@ -52,7 +52,7 @@ optional arguments:
 #### Example
 ```
 python3 swagger.py --swagger-file swagger.json -t <jwt_token> -H api.example.com
-python3 swagger.py --swagger-file swagger.json -t <jwt_token> --proxy http://127.0.0.1:8080 --host api.example.com --output-dir burp_requests
+python3 swagger_v1.py --swagger-file swagger.json -t <jwt_token> --proxy http://127.0.0.1:8080 --host api.example.com --output-dir burp_requests
 ```
 ---
 
