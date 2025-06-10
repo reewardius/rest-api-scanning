@@ -40,8 +40,8 @@ Add to openapi.json
 ```
 
 ```
-nuclei -l openapi.yaml -im openapi -duc-t nuclei-dast-templates/
-nuclei -l openapi.json -im openapi -duc -skip-format-validation -t nuclei-dast-templates/
+nuclei -l openapi.yaml -im openapi -t nuclei-dast-templates/ -skip-format-validation
+nuclei -l openapi.json -im openapi -t nuclei-dast-templates/ -skip-format-validation
 ```
 
 ![image](https://github.com/user-attachments/assets/ddd0bbce-41f9-40fe-b09c-d185bfb71b6b)
