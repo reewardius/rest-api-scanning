@@ -7,6 +7,8 @@
 
 https://github.com/reewardius/Swagger-EZ
 
+https://rhinosecuritylabs.github.io/Swagger-EZ/
+
 ![image](https://github.com/user-attachments/assets/4d6a4cd9-09de-4095-a729-21d7200ced5f)
 
 
