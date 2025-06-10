@@ -18,8 +18,30 @@ https://github.com/reewardius/Swagger-EZ
 ![image](https://github.com/user-attachments/assets/0e4e1a2d-7093-4f86-95c1-0c70e767d629)
 ![image](https://github.com/user-attachments/assets/435bdac6-971c-4f04-a576-1f594fb27abd)
 
+Possible errors:
 ```
-nuclei -l openapi.yaml -im openapi -t nuclei-dast-templates/
+[FTL] Could not create runner: could not create input provider: could not parse input file: no servers found in openapi schema
+```
+Add to openapi.json
+```
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "NEXT API GATEWAY",
+        "version": "0.0.0a"
+    },
+    "servers": [
+        {
+            "url": "https://api.yourdomain.com",
+            "description": "Main API server"
+        }
+    ],
+    "paths": {
+```
+
+```
+nuclei -l openapi.yaml -im openapi -duc-t nuclei-dast-templates/
+nuclei -l openapi.json -im openapi -duc -skip-format-validation -t nuclei-dast-templates/
 ```
 
 ![image](https://github.com/user-attachments/assets/ddd0bbce-41f9-40fe-b09c-d185bfb71b6b)
