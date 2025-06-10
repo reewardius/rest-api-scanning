@@ -6,8 +6,8 @@ import shutil
 import argparse
 import requests
 from urllib.parse import urlencode
-
 import urllib3
+
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 def load_swagger_file(file_path):
@@ -150,7 +150,7 @@ def send_to_burp(method, request_path, headers, body, scheme, host, proxy):
             headers=headers,
             data=body if body else None,
             proxies=proxies,
-            verify=False  # Disable SSL verification for testing (optional, adjust as needed)
+            verify=False
         )
         print(f"Sent request to {url}, status code: {response.status_code}")
     except requests.RequestException as e:
@@ -179,7 +179,8 @@ def main(swagger_file, output_dir, token=None, custom_host=None, proxy=None):
     
     swagger_data = load_swagger_file(swagger_file)
     
-    host = swagger_data.get('host', 'feedback.arlo.com')
+    # Use custom_host if provided, otherwise fall back to swagger_data host
+    host = custom_host if custom_host else swagger_data.get('host', 'example.com')
     base_path = swagger_data.get('basePath', '/')
     schemes = swagger_data.get('schemes', ['https'])
     paths = swagger_data.get('paths', {})
