@@ -93,15 +93,12 @@ usage: openapi_parse_v1.py [-h] --file FILE --host HOST [--auth-value AUTH_VALUE
 Generate Burp Suite requests from OpenAPI documentation
 
 optional arguments:
-  -h, --help            show this help message and exit
-  --file FILE           Path to OpenAPI JSON file
-  --host HOST           Host header (e.g., example.com)
-  --auth-value AUTH_VALUE
-                        Authentication value (Bearer token, API key, or
-                        user:pass for Basic Auth)
-  --auth-type {bearer,apiKey,basic}
-                        Authentication type
-  --proxy PROXY         Proxy address for Burp Suite (e.g., 127.0.0.1:8080)
+  -h, --help                         # Show this help message and exit
+  --file FILE                        # Path to OpenAPI JSON file
+  --host HOST                        # Host header (e.g., example.com)
+  --auth-value AUTH_VALUE            # Authentication value (Bearer token, API key, or user:pass for Basic Auth)
+  --auth-type {bearer,apiKey,basic}  # Authentication type
+  --proxy PROXY                      # Proxy address for Burp Suite (e.g., 127.0.0.1:8080)
 ```
 ##### Example:
 ```
@@ -135,12 +132,11 @@ Found swagger files that have endpoints without authorization can be sent to Bur
 Detect public (unauthenticated) endpoints in Swagger/OpenAPI specs
 
 optional arguments:
-  -h, --help            show this help message and exit
-  -url URL, --url URL   Single Swagger/OpenAPI URL to check
-  -f FILE, --file FILE  File containing URLs to check (one per line)
-  -o OUTPUT, --output OUTPUT
-                        Output file to write results
-  -silent, --silent     Silent mode: only output URLs with public endpoints
+  -h, --help                   # Show this help message and exit
+  -url URL, --url URL          # Single Swagger/OpenAPI URL to check
+  -f FILE, --file FILE         # File containing URLs to check (one per line)
+  -o OUTPUT, --output OUTPUT   # Output file to write results
+  -silent, --silent            # Silent mode: only output URLs with public endpoints
 
 python3 api_endpoints_without_auth.py -url https://example.com/swagger/v1/swagger.json
 python3 api_endpoints_without_auth.py -f urls.txt -silent
