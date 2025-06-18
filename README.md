@@ -126,7 +126,28 @@ python3 detect_public_endpoints.py --swagger swagger_tesla.json swagger_starlink
 
 ---
 
-7. **Token-Tailor**
+7. **Swagger API Without Auth**
+
+Found swagger files that have endpoints without authorization can be sent to Burp Suite API Scan.
+```
+# python3 api_endpoints_without_auth.py -h
+
+Detect public (unauthenticated) endpoints in Swagger/OpenAPI specs
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -url URL, --url URL   Single Swagger/OpenAPI URL to check
+  -f FILE, --file FILE  File containing URLs to check (one per line)
+  -o OUTPUT, --output OUTPUT
+                        Output file to write results
+  -silent, --silent     Silent mode: only output URLs with public endpoints
+
+python3 api_endpoints_without_auth.py -url https://example.com/swagger/v1/swagger.json
+python3 api_endpoints_without_auth.py -f urls.txt -silent
+python3 api_endpoints_without_auth.py -f urls.txt -silent -o swagger.txt
+```
+
+9. **Token-Tailor**
 
 https://github.com/forteBruno/Token-Tailor
 
